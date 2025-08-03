@@ -1,10 +1,12 @@
+const dotenv = require('dotenv');
+dotenv.config(); // Charge les variables d'environnement depuis le fichier .env
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const db = require("../../db");
 
-const JWT_SECRET = "ACCESS_TOKEN_SECRET"; // Doit correspondre à middleware/auth.js
+const JWT_SECRET = process.env.JWT_SECRET
 
 // Route POST pour l'inscription
 router.post("/register", async (req, res) => {

@@ -1,6 +1,8 @@
+const dotenv = require('dotenv');
+dotenv.config(); // Charge les variables d'environnement depuis le fichier .env
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = "ACCESS_TOKEN_SECRET"; // Doit correspondre à celui dans auth.js
+const JWT_SECRET = process.env.JWT_SECRET
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1]; // Extrait le token du header "Bearer <token>"
